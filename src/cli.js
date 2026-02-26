@@ -3,9 +3,9 @@
 import { readFile } from "fs/promises";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
-import { parseArgs, getHelpText } from "./lib/args.mjs";
-import { formatError } from "./lib/errors.mjs";
-import { convertMarkdownToPdf } from "./lib/pipeline.mjs";
+import { parseArgs, getHelpText } from "./lib/args.js";
+import { formatError } from "./lib/errors.js";
+import { convertMarkdownToPdf } from "./lib/pipeline.js";
 
 async function main() {
   const parsed = parseArgs(process.argv.slice(2));

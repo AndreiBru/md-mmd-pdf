@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import { extname, resolve } from "path";
 import { pathToFileURL } from "url";
-import { AppError } from "./errors.mjs";
+import { AppError } from "./errors.js";
 
 /**
  * @param {string | undefined} configPath

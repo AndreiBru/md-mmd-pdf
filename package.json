@@ -4,7 +4,7 @@
   "description": "CLI tool to convert Markdown with Mermaid diagrams to PDF.",
   "type": "module",
   "bin": {
-    "md-mmd-pdf": "src/cli.mjs"
+    "md-mmd-pdf": "src/cli.js"
   },
   "files": [
     "src",
@@ -15,10 +15,10 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "node scripts/lint.mjs",
+    "lint": "node scripts/lint.js",
     "test": "node --test",
     "check": "npm run lint && npm run test",
-    "pack:check": "node scripts/pack-check.mjs",
+    "pack:check": "node scripts/pack-check.js",
     "prepublishOnly": "npm run check && npm run pack:check"
   },
   "keywords": [

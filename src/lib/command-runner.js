@@ -1,5 +1,5 @@
 import { spawn } from "child_process";
-import { AppError } from "./errors.mjs";
+import { AppError } from "./errors.js";
 
 /**
  * @typedef {object} RunCommandOptions

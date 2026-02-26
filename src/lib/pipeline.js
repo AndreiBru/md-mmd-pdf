@@ -1,9 +1,9 @@
 import { mkdir, rm, stat } from "fs/promises";
 import { dirname, join, parse, resolve } from "path";
 import { fileURLToPath } from "url";
-import { AppError } from "./errors.mjs";
-import { runCommand } from "./command-runner.mjs";
-import { loadMdToPdfConfig } from "./config-loader.mjs";
+import { AppError } from "./errors.js";
+import { runCommand } from "./command-runner.js";
+import { loadMdToPdfConfig } from "./config-loader.js";
 
 /**
  * @typedef {object} ConvertOptions

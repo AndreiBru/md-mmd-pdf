@@ -27,7 +27,7 @@ async function collectMjsFiles(dir, out) {
       continue;
     }
 
-    if (entry.isFile() && fullPath.endsWith(".mjs")) {
+    if (entry.isFile() && fullPath.endsWith(".js")) {
       out.push(fullPath);
     }
   }

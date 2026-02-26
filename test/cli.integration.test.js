@@ -6,7 +6,7 @@ import { tmpdir } from "os";
 import { join, resolve, parse } from "path";
 import { spawnSync } from "child_process";
 
-const CLI_PATH = resolve("src/cli.mjs");
+const CLI_PATH = resolve("src/cli.js");
 const FIXTURES_DIR = resolve("test/fixtures");
 
 async function setupFixtureDir() {

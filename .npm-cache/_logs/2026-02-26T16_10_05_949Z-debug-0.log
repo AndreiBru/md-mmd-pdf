@@ -1,0 +1,41 @@
+0 verbose cli /Users/andreibru/.nvm/versions/node/v22.18.0/bin/node /Users/andreibru/.nvm/versions/node/v22.18.0/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@10.9.3
+2 info using node@v22.18.0
+3 silly config load:file:/Users/andreibru/.nvm/versions/node/v22.18.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/andreibru/Work/Misc/md-mmd-pdf/.npmrc
+5 silly config load:file:/Users/andreibru/.npmrc
+6 silly config load:file:/Users/andreibru/.nvm/versions/node/v22.18.0/etc/npmrc
+7 verbose title npm pack
+8 verbose argv "pack" "--dry-run" "--cache" "/Users/andreibru/Work/Misc/md-mmd-pdf/.npm-cache"
+9 verbose logfile logs-max:10 dir:/Users/andreibru/Work/Misc/md-mmd-pdf/.npm-cache/_logs/2026-02-26T16_10_05_949Z-
+10 verbose logfile /Users/andreibru/Work/Misc/md-mmd-pdf/.npm-cache/_logs/2026-02-26T16_10_05_949Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 notice
+14 notice 📦  md-mmd-pdf@0.1.0
+15 notice Tarball Contents
+16 notice 1.1kB LICENSE
+16 notice 2.4kB README.md
+16 notice 978B package.json
+16 notice 1.6kB src/cli.js
+16 notice 3.5kB src/lib/args.js
+16 notice 2.1kB src/lib/command-runner.js
+16 notice 1.5kB src/lib/config-loader.js
+16 notice 1.5kB src/lib/errors.js
+16 notice 5.5kB src/lib/pipeline.js
+17 notice Tarball Details
+18 notice name: md-mmd-pdf
+19 notice version: 0.1.0
+20 notice filename: md-mmd-pdf-0.1.0.tgz
+21 notice package size: 6.3 kB
+22 notice unpacked size: 20.1 kB
+23 notice shasum: 55912765490d22ef199e60f42414d76d76a46bd7
+24 notice integrity: sha512-riauDmH2JTGMs[...]89zMYL+LgQrFg==
+25 notice total files: 9
+26 notice
+27 verbose cwd /Users/andreibru/Work/Misc/md-mmd-pdf
+28 verbose os Darwin 25.2.0
+29 verbose node v22.18.0
+30 verbose npm  v10.9.3
+31 verbose exit 0
+32 info ok

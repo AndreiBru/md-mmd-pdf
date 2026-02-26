@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseArgs } from "../src/lib/args.mjs";
+import { parseArgs } from "../src/lib/args.js";
 
 test("parseArgs parses all supported options", () => {
   const result = parseArgs([
