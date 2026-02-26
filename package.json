@@ -1,0 +1,44 @@
+{
+  "name": "md-mmd-pdf",
+  "version": "0.1.0",
+  "description": "CLI tool to convert Markdown with Mermaid diagrams to PDF.",
+  "type": "module",
+  "bin": {
+    "md-mmd-pdf": "src/cli.mjs"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "test": "node --test",
+    "check": "npm run lint && npm run test",
+    "pack:check": "node scripts/pack-check.mjs",
+    "prepublishOnly": "npm run check && npm run pack:check"
+  },
+  "keywords": [
+    "markdown",
+    "mermaid",
+    "pdf",
+    "cli",
+    "md-to-pdf"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreibru/md-mmd-pdf.git"
+  },
+  "homepage": "https://github.com/andreibru/md-mmd-pdf#readme",
+  "bugs": {
+    "url": "https://github.com/andreibru/md-mmd-pdf/issues"
+  },
+  "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0",
+    "md-to-pdf": "^5.2.5"
+  }
+}
