@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, cp, readdir, access } from "fs/promises";
+import { mkdtemp, cp, readdir, access, readFile } from "fs/promises";
 import { constants as fsConstants } from "fs";
 import { tmpdir } from "os";
 import { join, resolve, parse } from "path";
@@ -85,4 +85,30 @@ test("--keep-temp preserves transformed markdown and artefacts", async () => {
 
   const leftovers = await listTempEntries(cwd, "valid-mermaid.md");
   assert.ok(leftovers.length >= 2);
+});
+
+test("page break markers are normalized in transformed markdown", async () => {
+  const cwd = await setupFixtureDir();
+
+  const result = runCli(cwd, ["page-break-markers.md", "--keep-temp"]);
+  assert.equal(result.status, 0, result.stderr);
+
+  const leftovers = await listTempEntries(cwd, "page-break-markers.md");
+  const transformedFile = leftovers.find((entry) => entry.endsWith(".md"));
+  assert.ok(transformedFile);
+
+  const transformedContent = await readFile(join(cwd, transformedFile), "utf8");
+  const breakTags =
+    transformedContent.match(/<div class="page-break"><\/div>/g) ?? [];
+  const canonicalMarkers = transformedContent.match(/^\\newpage$/gm) ?? [];
+  const commentMarkers =
+    transformedContent.match(/^<!--\s*pagebreak\s*-->$/gim) ?? [];
+
+  assert.equal(breakTags.length, 2);
+  assert.equal(canonicalMarkers.length, 1);
+  assert.equal(commentMarkers.length, 1);
+  assert.match(
+    transformedContent,
+    /```md\n\\newpage\n<!-- pagebreak -->\n```/,
+  );
 });

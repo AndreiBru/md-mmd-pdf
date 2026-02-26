@@ -1,9 +1,10 @@
-import { mkdir, rm, stat } from "fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "fs/promises";
 import { dirname, join, parse, resolve } from "path";
 import { fileURLToPath } from "url";
 import { AppError } from "./errors.js";
 import { runCommand } from "./command-runner.js";
 import { loadMdToPdfConfig } from "./config-loader.js";
+import { getPageBreakCss, normalizePageBreakMarkers } from "./page-breaks.js";
 
 /**
  * @typedef {object} ConvertOptions
@@ -49,6 +50,8 @@ export async function convertMarkdownToPdf(options) {
       puppeteerConfigPath: options.puppeteerConfigPath,
       verbose: options.verbose,
     });
+
+    await applyPageBreakMarkers(tempMarkdownPath);
 
     await renderPdf({
       transformedMarkdownPath: tempMarkdownPath,
@@ -170,10 +173,13 @@ async function renderPdf(args) {
   }
 
   const userConfig = await loadMdToPdfConfig(args.configPath);
+  const userCss = typeof userConfig.css === "string" ? userConfig.css : "";
+  const mergedCss = [getPageBreakCss(), userCss].filter(Boolean).join("\n\n");
   const config = {
     ...userConfig,
     basedir: args.basedir,
     dest: args.outputPath,
+    css: mergedCss,
   };
 
   if (args.verbose) {
@@ -188,6 +194,25 @@ async function renderPdf(args) {
     throw new AppError({
       stage: "pdf-render",
       message: "md-to-pdf failed to generate output",
+      cause,
+    });
+  }
+}
+
+/**
+ * @param {string} markdownPath
+ */
+async function applyPageBreakMarkers(markdownPath) {
+  try {
+    const markdown = await readFile(markdownPath, "utf8");
+    const normalized = normalizePageBreakMarkers(markdown);
+    if (normalized !== markdown) {
+      await writeFile(markdownPath, normalized);
+    }
+  } catch (cause) {
+    throw new AppError({
+      stage: "prepare-markdown",
+      message: "Failed to normalize page break markers",
       cause,
     });
   }

@@ -65,6 +65,26 @@ md-mmd-pdf docs/architecture.md --keep-temp --verbose
 - Fails fast on Mermaid rendering errors.
 - Returns non-zero exit code on any failure.
 - Removes intermediate files/directories by default.
+- Supports formal page-break markers:
+  - Canonical: `\newpage`
+  - Alias: `<!-- pagebreak -->`
+- Page-break CSS is injected automatically (`break-after: page` + fallback).
+
+## Page Breaks
+
+Use a standalone marker line:
+
+```md
+\newpage
+```
+
+or:
+
+```md
+<!-- pagebreak -->
+```
+
+Both are normalized to `<div class="page-break"></div>` before PDF generation.
 
 ## md-to-pdf Config
 
