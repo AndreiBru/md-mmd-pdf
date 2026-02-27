@@ -107,24 +107,9 @@ If Mermaid parsing fails, rerun with `--verbose` to see the underlying `mmdc` er
 
 Mermaid CLI and md-to-pdf use Puppeteer. In constrained environments you may need Puppeteer launch settings in your Mermaid or md-to-pdf config files.
 
-## Development
+## Contributing
 
-```bash
-npm run check
-```
-
-Package dry-run:
-
-```bash
-npm run pack:check
-```
-
-## Release
-
-1. Update `version` in `package.json`.
-2. Run `npm run check`.
-3. Run `npm run pack:check`.
-4. Publish manually with `npm publish`.
+Maintainer/development/release notes live in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## License
 
